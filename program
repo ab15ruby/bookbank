@@ -1,0 +1,89 @@
+#!/usr/bin/env ruby
+
+require_relative "dosya"
+require_relative "kullanici"
+
+print "BookBank'a hoşgeldiniz. Size yardımcı olabilmem için lütfen yapmak istediğiniz işlemi belirtiniz: GİRİŞ: 1 ÜYE OLMAK İSTİYORUM: 2\n"
+print "Yapmak istediğim işlem: "
+
+loop do
+	uye_mi_degil_mi = gets.chomp.to_i
+
+	case uye_mi_degil_mi
+		when 1
+			print 'Enter an ID : '
+			id = gets.chomp
+
+			unless File.exist? "kullanicilar/#{id}"
+				puts "Bu id daha önce yok"
+				redo
+			end
+
+			dosya = Dosya.new("kullanicilar/#{id}")
+			kullanici = Kullanici.girdi(dosya.satirlar[0])
+
+			puts "Kullanıcı puanı: #{kullanici.point}"
+			puts "Kitaplarınız: "
+			kullanici.kitaplar.each { |kitap| puts kitap }
+
+		when 2
+			puts "Memnuniyetle! Üyelik sayfasına yönlendiriliyorsunuz"
+			
+			puts "Kullanıcı ID girer misin? "
+			id = gets.chomp
+
+			if File.exist? "kullanicilar/#{id}"
+				puts "Bu id daha önce var"
+				redo
+			end
+
+			puts "Kitap söyler misin? "
+			kitap = gets.chomp
+
+			puts "Yazar söyler misin? "
+			yazar = gets.chomp
+
+			puts "Kitabınız kaç sayfa? "
+			sayfa = gets.chomp
+
+			puan = sayfa.to_f * 0.25
+			puan = 200 if puan > 200
+
+			kullanici = Kullanici.new([puan, [kitap]])
+
+			dosya = Dosya.new("kullanicilar/#{id}")
+			dosya.olustur(kullanici.cikti)
+
+			kitaplar_dosya = Dosya.new("kitap_listesi")
+			kitaplar_dosya.ekle("#{kitap},#{yazar},#{puan}")
+
+			puts "Teşekkür Ederiz"
+		when 3
+			break
+	end
+end
+
+
+
+# if uye_mi_degil_mi == 1
+#   Kullanici.new
+#   puts 'Enter an ID :'
+
+#   @id = gets.chomp
+
+#   puts "Enter the given book :"
+#   @user_books = gets.chomp
+#   puts "Enter the author :"
+#   @author = gets.chomp
+#   puts 'Enter the book point :'
+#   @book_page = gets.to_s.chomp
+#   print "O halde girişinizi gerçekleştirelim... \n"
+#   # require class
+#   break
+# elsif uye_mi_degil_mi == 2
+#   # require class
+#   break
+# else print "Lütfen belirtilen seçenekler arasından seçim yapınız: GİRİŞ: 1 ÜYE OLMAK İSTİYORUM: 2"
+# redo
+# end
+# end

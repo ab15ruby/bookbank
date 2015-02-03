@@ -1,4 +1,6 @@
-require_relative 'Kullanici'
+require_relative 'kullanici'
+require_relative 'dosya'
+
 class Ekle
 
   GIRIS = 1
@@ -13,7 +15,7 @@ class Ekle
     uye_mi_degil_mi = gets.chomp.to_i
 
     if uye_mi_degil_mi == 1
-      Kullanici.ekle
+      Kullanici.new
       puts 'Enter an ID :'
 
       @id = gets.chomp
@@ -26,10 +28,13 @@ class Ekle
       @book_page = gets.to_s.chomp
       print "O halde girişinizi gerçekleştirelim... \n"
       # require class
+      break
     elsif uye_mi_degil_mi == 2
       print "Memnuniyetle! Üyelik sayfasına yönlendiriliyorsunuz"
       # require class
+      break
     else print "Lütfen belirtilen seçenekler arasından seçim yapınız: GİRİŞ: 1 ÜYE OLMAK İSTİYORUM: 2"
+      break
     redo
     end
   end
