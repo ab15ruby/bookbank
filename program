@@ -66,30 +66,3 @@ loop do
 
 	end
 end
-
-
-
-
-
-# if uye_mi_degil_mi == 1
-#   Kullanici.new
-#   puts 'Enter an ID :'
-
-#   @id = gets.chomp
-
-#   puts "Enter the given book :"
-#   @user_books = gets.chomp
-#   puts "Enter the author :"
-#   @author = gets.chomp
-#   puts 'Enter the book point :'
-#   @book_page = gets.to_s.chomp
-#   print "O halde girişinizi gerçekleştirelim... \n"
-#   # require class
-#   break
-# elsif uye_mi_degil_mi == 2
-#   # require class
-#   break
-# else print "Lütfen belirtilen seçenekler arasından seçim yapınız: GİRİŞ: 1 ÜYE OLMAK İSTİYORUM: 2"
-# redo
-# end
-# end
