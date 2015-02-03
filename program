@@ -25,6 +25,8 @@ loop do
 			puts "Kullanıcı puanı: #{kullanici.point}"
 			puts "Kitaplarınız: "
 			kullanici.kitaplar.each { |kitap| puts kitap }
+			break
+
 
 		when 2
 			puts "Memnuniyetle! Üyelik sayfasına yönlendiriliyorsunuz"
@@ -58,10 +60,14 @@ loop do
 			kitaplar_dosya.ekle("#{kitap},#{yazar},#{puan}")
 
 			puts "Teşekkür Ederiz"
+			break
 		when 3
 			break
+
 	end
 end
+
+
 
 
 
