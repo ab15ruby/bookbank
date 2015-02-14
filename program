@@ -25,6 +25,26 @@ loop do
 			puts "Kullanıcı puanı: #{kullanici.point}"
 			puts "Kitaplarınız: "
 			kullanici.kitaplar.each { |kitap| puts kitap }
+=begin
+      puts "Kitap Almak İstiyor musunuz? evet-1 hayır-2"
+      kitapAlma = gets.chomp.to_i
+
+      case kitapAlma
+        when 1
+          puts "Kitap Seçin ve İsim,Yazar,Puan şeklinde girin :"
+
+          f = File.open("kitap_listesi","r")
+          puts f.read()
+          f.close()
+
+          kitap_girdi = gets.chomp
+          dosya.cikar(kitap_girdi)
+          break
+        when 2
+          break
+
+      end
+=end
 			break
 
 
@@ -60,9 +80,12 @@ loop do
 			kitaplar_dosya.ekle("#{kitap},#{yazar},#{puan}")
 
 			puts "Teşekkür Ederiz"
+
+
 			break
 		when 3
 			break
+  end
 
 	end
-end
+

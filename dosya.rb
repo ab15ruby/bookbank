@@ -2,13 +2,14 @@ class Dosya
 
 	def initialize (dosya_adi)
 		@dosya_adi = dosya_adi
+    #@kitap_adi = kitap_adi
 	end
 
 	def satirlar
-		satlar = []
+    satlar = []
 		File.open(@dosya_adi, "r") do |dosya|
 			dosya.readlines.each { |satir| satlar << satir.chomp }
-		end 
+    end
 		satlar
 	end
 
@@ -22,6 +23,13 @@ class Dosya
 		File.open(@dosya_adi, "w") do |dosya|
 			dosya.puts icerik
 		end 
-	end
+  end
+
+  def cikar(satir)
+    File.open('kitap_listesi', 'w') do |f|
+      f.write(satir.join(''))
+    end
+  end
+
 
 end
