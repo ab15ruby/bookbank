@@ -25,11 +25,11 @@ class Dosya
 		end 
   end
 
- 
-  def cikar(kod)
-    File.open(@dosya_adi, "w") do |dosya|
-      satirlar.delete_at(kod)
+  def cikar(satir)
+    File.open('kitap_listesi', 'w') do |f|
+      f.write(satir.join(''))
     end
   end
+
 
 end

@@ -38,7 +38,7 @@ loop do
           f.close()
           kod = gets.chomp.to_i - 1
          # kitap_girdi = gets.chomp
-          dosya.satirlar.delete_at(kod) #buradaki kod dediğim şey, kitaplara verilecex index kodudur.
+          dosya.satirlar.delete_at(kod)
           #dosya.cikar(kitap_girdi)
           break
         when 2
